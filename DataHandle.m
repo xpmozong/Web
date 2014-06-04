@@ -14,7 +14,6 @@
     AsynchronousProgressDelegateBlock didAsynchronousProgress;
     AsynchronousDataDelegateBlock didAsynchronousData;
     AsynchronousErrorDelegateBlock didAsynchronousError;
-    CacheImageBlock didCacheImage;
 }
 
 @end

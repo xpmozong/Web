@@ -25,8 +25,6 @@ typedef void (^AsynchronousBlock)(DataHandle *dataHandle, NSURLResponse *respons
 typedef void (^AsynchronousProgressDelegateBlock)(DataHandle *dataHandle, float progess);
 typedef void (^AsynchronousDataDelegateBlock)(DataHandle *dataHandle, NSData *data, id result);
 typedef void (^AsynchronousErrorDelegateBlock)(DataHandle *dataHandle, NSError *error);
-/// 缓存图片 block
-typedef void (^CacheImageBlock)(DataHandle *data);
 
 @interface DataHandle : NSObject<NSURLConnectionDataDelegate>
 

@@ -84,7 +84,7 @@ static DataHandle *handle = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     if (didSynchronous != nil) {
         id result = [self getSerializationData:data];
-        didSynchronous(self, response, error, data, result);
+        didSynchronous(response, error, data, result);
     }
 }
 
@@ -98,7 +98,7 @@ static DataHandle *handle = nil;
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (didAsynchronous != nil) {
             id result = [self getSerializationData:data];
-            didAsynchronous(self, response, connectionError, data, result);
+            didAsynchronous(response, connectionError, data, result);
         }
     }];
     [queue release];
@@ -132,7 +132,7 @@ static DataHandle *handle = nil;
     NSUInteger currentLength = [self.receiveData length];
     float progess = 1.0 * currentLength / _totalLength;
     if (didAsynchronousProgress != nil) {
-        didAsynchronousProgress(self, progess);
+        didAsynchronousProgress(progess);
     }
 }
 
@@ -141,7 +141,7 @@ static DataHandle *handle = nil;
     // 数据解析，以及数据使用
     if (didAsynchronousData != nil) {
         id result = [self getSerializationData:_receiveData];
-        didAsynchronousData(self, _receiveData, result);
+        didAsynchronousData(_receiveData, result);
     }
 }
 
@@ -149,7 +149,7 @@ static DataHandle *handle = nil;
 {
     // 错误处理
     if (didAsynchronousError != nil) {
-        didAsynchronousError(self, error);
+        didAsynchronousError(error);
     }
 }
 

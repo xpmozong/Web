@@ -6,25 +6,16 @@
 //  Copyright (c) 2014年 许 萍. All rights reserved.
 //
 
-//使用方式:
-//DataHandle *dataHandle = [[DataHandle alloc] init];
-//[dataHandle asynchronous:url HTTPMethod:@"GET" HTTPBody:nil asynchronous:^(DataHandle *dataHandle, NSURLResponse *response, NSError *error, NSData *data, id result) {
-//    NSLog(@"%@", result);
-//}];
-//[dataHandle release];
-
 #import <Foundation/Foundation.h>
 
-@class DataHandle;
-
 /// 同步请求 block
-typedef void (^SynchronousBlock)(DataHandle *dataHandle, NSURLResponse *response, NSError *error, NSData *data, id result);
+typedef void (^SynchronousBlock)(NSURLResponse *response, NSError *error, NSData *data, id result);
 /// 异步请求 block
-typedef void (^AsynchronousBlock)(DataHandle *dataHandle, NSURLResponse *response, NSError *error, NSData *data, id result);
+typedef void (^AsynchronousBlock)(NSURLResponse *response, NSError *error, NSData *data, id result);
 /// 异步请求 delegate block
-typedef void (^AsynchronousProgressDelegateBlock)(DataHandle *dataHandle, float progess);
-typedef void (^AsynchronousDataDelegateBlock)(DataHandle *dataHandle, NSData *data, id result);
-typedef void (^AsynchronousErrorDelegateBlock)(DataHandle *dataHandle, NSError *error);
+typedef void (^AsynchronousProgressDelegateBlock)(float progess);
+typedef void (^AsynchronousDataDelegateBlock)(NSData *data, id result);
+typedef void (^AsynchronousErrorDelegateBlock)(NSError *error);
 
 @interface DataHandle : NSObject<NSURLConnectionDataDelegate>
 
